@@ -24,7 +24,7 @@ class DNA:
             if self.genes[i] == target[i]:
                 score += 1
         # the score is then normalized by dividing it with the no of elements that needs to be correct
-        self.fit = score/len(target)
+        self.fit = score
 
     # crossover function takes two set of DNA and performs a crossover b/w those
     def crossover(self, partner):

@@ -31,7 +31,7 @@ class Population:
             self.population.append(DNA(len(target)))
         self.calcFitness()
         self.finished = False
-        self.perfectScore = 1
+        self.perfectScore = len(target)
 
     # calcuate the fitness of the individual element of the population
     def calcFitness(self):
@@ -40,15 +40,13 @@ class Population:
 
     # natural selection to take place here
     def naturalSelection(self):
-        self.matingPool.clear()  # clear the mating pool
-        maxFitness = 0
-        for popu in self.population:  # compute the maximum fitness in the group
-            if(popu.fit > maxFitness):
-                maxFitness = popu.fit
-        for popu in self.population:  # compute the maxFitness and normalise the data b/w 0 to 100
-            fit = int(map(popu.fit, 0, maxFitness, 0, 100))
-            for i in range(fit):  # add to the most fittest to the mating pool
-                self.matingPool.append(popu)
+        # clear the mating pool
+        self.matingPool.clear()
+        # sorting the array according to fitness and taking the
+        # top 1/3 fit guys to make the next generation
+        self.population.sort(key=lambda x: x.fit, reverse=True)
+        for i in range(int(len(self.population)/3)):
+            self.matingPool.append(self.population[i])
 
     # generate a new population of the with some mutation and crossovers
     def generate(self):
