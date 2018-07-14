@@ -60,12 +60,7 @@ class Population:
 
     # to get the best fittest element of the lot
     def getBest(self):
-        worldRecord = 0
-        index = 0
-        for i in range(len(self.population)):
-            if worldRecord < self.population[i].fit:
-                worldRecord = self.population[i].fit
-                index = i
+        worldRecord = self.population[0].fit
         if worldRecord == self.perfectScore:
             self.finished = True
-        return self.population[index].getPhrase()
+        return self.population[0].getPhrase()

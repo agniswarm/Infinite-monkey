@@ -1,9 +1,9 @@
 from Population import Population
 
 # define the variables that can be tweaked
-target = 'To be or not to be.'
+target = 'Et tu Brute, then Fall Caesar'
 popMax = 150
-mutationRate = 0.01
+mutationRate = 0.05
 
 population = Population(target, mutationRate, popMax)
 
