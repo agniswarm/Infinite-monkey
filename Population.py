@@ -45,8 +45,9 @@ class Population:
         # sorting the array according to fitness and taking the
         # top 1/3 fit guys to make the next generation
         self.population.sort(key=lambda x: x.fit, reverse=True)
-        for i in range(int(len(self.population)/3)):
-            self.matingPool.append(self.population[i])
+        self.matingPool = self.population[0:int(len(self.population)/3)]
+        # for i in range(int(len(self.population)/3)):
+        #     self.matingPool.append(self.population[i])
 
     # generate a new population of the with some mutation and crossovers
     def generate(self):
